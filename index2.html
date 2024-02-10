@@ -245,20 +245,30 @@
 
 
     </style>
+    <script>
+        function startverification(){
+        window.location.href='livevideo.html';
+        }
+        function enableSoon(language) {
+            alert("Language support for " + language + " will be enabled soon!");
+        }
+
+    </script>
 </head>
 <body>
 <div class="main-content">
     <div>
         <h>Please select your language</h>
-        <button class="btn btn-primary" onclick="switchLanguage('Telugu')">TELUGU</button>
-        <button class="btn btn-primary" onclick="switchLanguage('Telugu')">HINDI</button>
-        <button class="btn btn-primary" onclick="switchLanguage('Telugu')">ENGLISH</button>
-        <button class="btn btn-primary" onclick="switchLanguage('Telugu')">MALAYALAM</button>
-        <button class="btn btn-primary" onclick="switchLanguage('Telugu')">TAMIL</button>
-        <button class="btn btn-primary" onclick="switchLanguage('Telugu')">KANNADA</button>
-        <button class="btn btn-primary" onclick="switchLanguage('Telugu')">BENGALI</button>
-        <button class="btn btn-primary" onclick="switchLanguage('Telugu')">ODISSI</button>
+        <button class="btn btn-primary" onclick="enableSoon('TELUGU')">TELUGU</button>
+        <button class="btn btn-primary" onclick="enableSoon('HINDI')">HINDI</button>
+        <button class="btn btn-primary" onclick="enableSoon('ENGLISH')">ENGLISH</button>
+        <button class="btn btn-primary" onclick="enableSoon('MALYALAM')">MALAYALAM</button>
+        <button class="btn btn-primary" onclick="enableSoon('TAMIL')">TAMIL</button>
+        <button class="btn btn-primary" onclick="enableSoon('KANANDA')">KANNADA</button>
+        <button class="btn btn-primary" onclick="enableSoon('BENGALI')">BENGALI</button>
+        <button class="btn btn-primary" onclick="enableSoon('ODISSI')">ODISSI</button>
     </div>
+    
 
     <div class="navbar">
         <a href="Home">Home</a>
