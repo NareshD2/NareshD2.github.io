@@ -17,9 +17,18 @@
         <div class="product-info">
             <button class="btn btn-primary" onclick="alert('this will take you to payment page')">Buy Now</button>
             <button class="btn btn-primary">
-                <a href="/products?id={{%ID%}}" class="btn btn-primary">Show Details</a>
+                <a href="/products?language={{%langu%}}&id={{%ID%}}" class="btn btn-primary">Show Details</a>
             </button>
             
         </div>
     </div>
+    <div class="chatbot">
+        <button class="chatbot button" onclick="loadWebpage()"> chatbot</button>
+        <iframe id="embeddedFrame" width="800" height="600" frameborder="0"></iframe>
+    </div>
+    <script>
+        function loadWebpage() {
+            window.location.href= "https://mediafiles.botpress.cloud/62cd8613-abc8-40c4-8870-379efaccaeb5/webchat/bot.html";
+        }
+    </script>
 </div>
