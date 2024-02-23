@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <script src="route.js"></script> 
     <title>Node App</title>
     <style>
         * {
@@ -241,6 +242,32 @@
 .highlight {
     color: hwb(79 20% 0%); /* Your desired highlight color */
 }
+.chatbot {
+    position: fixed; /* Fixed positioning so it stays in the same place when scrolling */
+    top: 5px; /* Distance from the bottom of the viewport */
+    right: 5px; /* Distance from the right of the viewport */
+    width: 100px; /* Width of the button */
+    height: 100px;
+    background-color:greenyellow;
+}
+
+.chatbot-button {
+    width: 100px; /* Width of the button */
+    height: 100px; /* Height of the button */
+    border-radius: 50%; /* Make it round */
+    background-color: blue; /* Button background color */
+    color: #ffffff; /* Button text color */
+    border: none; /* Remove border */
+    cursor: pointer; /* Show pointer cursor on hover */
+    font-size: 16px; /* Font size of the button text */
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle shadow for depth */
+    transition: background-color 0.3s ease; /* Smooth transition for background color */
+}
+
+.chatbot-button:hover {
+    background-color: #0056b3; /* Darker color on hover */
+}
+
 
 
 
@@ -257,70 +284,44 @@
 </head>
 <body>
 <div class="main-content">
-    <div>
-        <h>Please select your language</h>
-        <button class="btn btn-primary" onclick="enableSoon('TELUGU')">TELUGU</button>
-        <button class="btn btn-primary" onclick="enableSoon('HINDI')">HINDI</button>
-        <button class="btn btn-primary" onclick="enableSoon('ENGLISH')">ENGLISH</button>
-        <button class="btn btn-primary" onclick="enableSoon('MALYALAM')">MALAYALAM</button>
-        <button class="btn btn-primary" onclick="enableSoon('TAMIL')">TAMIL</button>
-        <button class="btn btn-primary" onclick="enableSoon('KANANDA')">KANNADA</button>
-        <button class="btn btn-primary" onclick="enableSoon('BENGALI')">BENGALI</button>
-        <button class="btn btn-primary" onclick="enableSoon('ODISSI')">ODISSI</button>
-    </div>
     
-
+    
     <div class="navbar">
         <a href="Home">Home</a>
         <a href="Products">Products</a>
         <a href="About">About</a>
         <a href="Contact">Contact</a>
     </div>
+    
     <div class="page-content">
+        <div>
+            <h>Please select your language</h>
+            <button id="Telugu" class="btn btn-primary" onclick="loadLanguageContent('telugu')"><a href="/products?language=telugu">TELUGU</a></button>
+                    <button id="Hindi" class="btn btn-primary" onclick="loadLanguageContent('hindi')"><a href="/products?language=hindi">HINDI</a></button>
+                    <button id="English" class="btn btn-primary" onclick="loadLanguageContent('english')"><a href="/products?language=english">ENGLISH</a></button>
+                    <button id="Malyalam" class="btn btn-primary" onclick="loadLanguageContent('malyalum')"><a href="/products?language=malyalum">MALYALUM</a></button>
+                    <button id="Tamil" class="btn btn-primary"onclick="loadLanguageContent('tamil)"><a href="/products?language=tamil">TAMIL</a></button>
+                    <button id="Kanada" class="btn btn-primary"onclick="loadLanguageContent('kanada')"><a href="/products?language=kanada">KANADA</a></button>
+                    <button id="Bengali" class="btn btn-primary"onclick="loadLanguageContent('bengali')"><a href="/products?language=bengali">BENGALI</a></button>
+                    <button id="Odissi" class="btn btn-primary"onclick="loadLanguageContent('odissi')"><a href="/products?language=odissi">ODISSI</a></button>
+        </div>
         {{%CONTENT%}}
     </div>
-    <script>
-        // Function to switch the language
-        function switchLanguage(language) {
-            // Get all elements with the 'translatable' class
-            var elements = document.getElementsByClassName('translatable');
-            // Loop through each element and replace its content based on the language
-            for (var i = 0; i < elements.length; i++) {
-                var element = elements[i];
-                // Get the translation based on the element's current content and the selected language
-                var translation = getTranslation(element.textContent.trim(), language);
-                // Replace the element's content with the translation
-                element.textContent = translation;
-            }
-        }
     
-        // Function to get the translation for a given text and language
-        function getTranslation(text, language) {
-            // Define your translations here
-            var translations = {
-                // English translations
-                'TELUGU': {
-                    'Home': 'హోమ్',
-                    'Products': 'ఉత్పత్తులు',
-                    'About': 'గురించి',
-                    'Contact': 'సంప్రదించండి',
-                    // Add more translations as needed
-                },
-                // Hindi translations
-                'Hindi': {
-                    'Home': 'होम',
-                    'Products': 'उत्पाद',
-                    'About': 'के बारे में',
-                    'Contact': 'संपर्क करें',
-                    // Add more translations as needed
-                }
-                // Add more languages and translations as needed
-            };
-    
-            // Return the translation if available, or the original text if not found
-            return translations[language][text] || text;
-        }
-    </script>
 </div>
+<script>
+    function loadLanguageContent(language) {
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("content").innerHTML = this.responseText;
+            }
+        };
+        xhttp.open("GET", "http://localhost:4000/?language=" + language, true);
+        xhttp.send();
+        loadProductData(language);
+    }
+    
+</script>
 </body>
 </html>
