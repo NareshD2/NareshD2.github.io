@@ -5,8 +5,6 @@
                 <h3>Expert Rating Out of 5<span class="highlight">Stars</h3>
                 <h4>{{%EXPERTRATING%}} <span class="highlight">Stars</span></h4>
             </div>
-            
-            
             <div class="product-desc-image">
                 
                 <div id="image-carousel" class="carousel slide" data-ride="carousel">
@@ -58,24 +56,22 @@
                         <h3>Customer Rating Out Of 5 <span class="highlight">Stars</span></h3>
                         <h4>{{%CUSTOMERRATING%}} <span class="highlight">Stars</h4>
                     </div>
+                    <div class="chatbot">
+                        <button class="chatbot button" onclick="loadWebpage()">chatbot</button>
+                        <iframe id="embeddedFrame" width="800" height="600" frameborder="0"></iframe>  
+                    </div>
+                    
+
+    <script>
+        function loadWebpage() {
+            window.location.href="https://mediafiles.botpress.cloud/62cd8613-abc8-40c4-8870-379efaccaeb5/webchat/bot.html";
+        }
+    </script>
                     
                     
                     
             </div>
             <button onclick="startverification()" class="btn btn-primary" >LIVE VERIFICATION</button>
-                
-            
-            <script>
-            
-                function startverification(){
-                window.location.href='livevideo.html';
-                }
-            </script>
-            
-            
-        
-    
-            
             </div>
 
             <div>
@@ -85,4 +81,5 @@
         
 
     </div>
+    
 </div>
